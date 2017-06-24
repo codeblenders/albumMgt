@@ -124,8 +124,17 @@ This project utilises following four key components of Java: Java network progra
     |java.awt.event.WindowEvent ||
     |java.awt.event.WindowListener ||
 
-  + #### lisenter and anoiners-internal class  
+  + #### anonymous inner class listeners
+    Defining an inner class listener to handle events is a very popular style. You can create an inner class without specifying a name this is known as an anonymous inner class. Anonymous inner classes can make your code easier to read because the class is defined where it is referenced. 
   + #### code structure
-
+    Examples of Using *EventHandler* The simplest use of EventHandler is to install a listener that calls a method on the target object with no arguments. In the following example we create an ActionListener that invokes the toFront method on an instance of javax.swing.JFrame.
+    ```java
+    //Equivalent code using an inner class instead of EventHandler.
+    myButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            frame.toFront();
+        }
+    });
+    ```
 
  
