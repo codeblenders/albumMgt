@@ -1,180 +1,131 @@
-# Dillinger
-
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-
-Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.
-
-  - Type some Markdown on the left
-  - See HTML in the right
-  - Magic
-
-# New Features!
-
-  - Import a HTML file and watch it magically convert to Markdown
-  - Drag and drop images (requires your Dropbox account be linked)
+# Album Management Project by Java 
+## Overview
+This project aims to build up a Album management systems, in C-S structure, by utilising the basic syntax of Java with common components, including network socket, multi thread, Java GUI and Derby Database.
+## Environment & Usage
+This software includes Server side and Client side.
++ Server Side
+  
+  Server side requires: initial album collcetion.xml file and customised data structure to stands for album. They needs to be add as following structure. The "MyCollectionServer" is the main programm ruuning at server side
 
 
-You can also:
-  - Import and save files from GitHub, Dropbox, Google Drive and One Drive
-  - Drag and drop markdown and HTML files into Dillinger
-  - Export documents as Markdown, HTML and PDF
-
-Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As [John Gruber] writes on the [Markdown site][df1]
-
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable
-> as possible. The idea is that a
-> Markdown-formatted document should be
-> publishable as-is, as plain text, without
-> looking like it's been marked up with tags
-> or formatting instructions.
-
-This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
-
-### Tech
-
-Dillinger uses a number of open source projects to work properly:
-
-* [AngularJS] - HTML enhanced for web apps!
-* [Ace Editor] - awesome web-based text editor
-* [markdown-it] - Markdown parser done right. Fast and easy to extend.
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework [@tjholowaychuk]
-* [Gulp] - the streaming build system
-* [Breakdance](http://breakdance.io) - HTML to Markdown converter
-* [jQuery] - duh
-
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
-
-### Installation
-
-Dillinger requires [Node.js](https://nodejs.org/) v4+ to run.
-
-Install the dependencies and devDependencies and start the server.
-
-```sh
-$ cd dillinger
-$ npm install -d
-$ node app
-```
-
-For production environments...
-
-```sh
-$ npm install --production
-$ npm run predeploy
-$ NODE_ENV=production node app
-```
-
-### Plugins
-
-Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
-
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md] [PlDb] |
-| Github | [plugins/github/README.md] [PlGh] |
-| Google Drive | [plugins/googledrive/README.md] [PlGd] |
-| OneDrive | [plugins/onedrive/README.md] [PlOd] |
-| Medium | [plugins/medium/README.md] [PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md] [PlGa] |
+  ![image](https://cloud.githubusercontent.com/assets/28517651/26786921/8101eeec-4a4b-11e7-97c4-cf9192cf1f34.png)
 
 
-### Development
++ Client Side
 
-Want to contribute? Great!
+  Client side has GUI, ustilising Java GUI components - swing. It also requires the same customised data structre to stands for album, thus to communicate with Server side to implement functions, such as adding, deleting, ect. They needs to be added as following structure 
 
-Dillinger uses Gulp + Webpack for fast developing.
-Make a change in your file and instantanously see your updates!
+  ![image](https://user-images.githubusercontent.com/28517651/27001088-ab5067f2-4e04-11e7-8e6c-8ea12d02e611.png)
 
-Open your favorite Terminal and run these commands.
+To run the project, you should run "MyCollectionServer" first on server side. The server process will be running waitting for the connection from any client. Then run "MyCollection" on client side. The GUI window will pup-out. By clicking "connection server" button, you need to specify the server address and then connection will be built.
 
-First Tab:
-```sh
-$ node app
-```
+![image](https://user-images.githubusercontent.com/28517651/27001136-5e2a2aca-4e05-11e7-9d59-b15f7e569303.png)
 
-Second Tab:
-```sh
-$ gulp watch
-```
+![image](https://user-images.githubusercontent.com/28517651/27001148-a3016b5e-4e05-11e7-8d78-f730095e9865.png)
 
-(optional) Third:
-```sh
-$ karma test
-```
-#### Building for source
-For production release:
-```sh
-$ gulp build --prod
-```
-Generating pre-built zip archives for distribution:
-```sh
-$ gulp build dist --prod
-```
-### Docker
-Dillinger is very easy to install and deploy in a Docker container.
+By running this project, you can view all the album records on server via client GUI. By clicking then album name, detials will be displayed. Meanwhile, you can also add, delete the albums.
 
-By default, the Docker will expose port 80, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
+![image](https://user-images.githubusercontent.com/28517651/27036084-0f42220a-4fc7-11e7-857d-7e6a722eac2f.png)
 
-```sh
-cd dillinger
-docker build -t joemccann/dillinger:${package.json.version}
-```
-This will create the dillinger image and pull in the necessary dependencies. Be sure to swap out `${package.json.version}` with the actual version of Dillinger.
+## Techniqaul and Key points
 
-Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8000 of the host to port 80 of the Docker (or whatever port was exposed in the Dockerfile):
+This project utilises following four key components of Java: Java network program (socket), Multi-process, Java GUI (lisenter) and Derby database.
++ Socket
 
-```sh
-docker run -d -p 8000:8080 --restart="always" <youruser>/dillinger:${package.json.version}
-```
+  Socket is the combination of IP and port number to identify the uniq service on the internet. Client and Server can use socket to establish connecitons to communicate with each other.
+  + #### reference libraries
 
-Verify the deployment by navigating to your server address in your preferred browser.
+    | Name | Description |
+    | ---- | ----------- | 
+    |java.net.socket | Main library cotains all the socket objects and relavant members|
+    |java.net.ConnectException | test|
+    |java.net.UnknownHostException | test|
+    |java.net.ServerSocket | test|
 
-```sh
-127.0.0.1:8000
-```
+  + #### key concept and process
 
-#### Kubernetes + Google Cloud
+    Server will run a particular service on server machine, locating by IP of server and port of the process, socket is the way to identify this service. A new socket will run for a server service. After this, server side will be ready for any client connection. On client side, a socket will be made to connect to server, by specifying server IP and server port number. 
 
-See [KUBERNETES.md](https://github.com/joemccann/dillinger/blob/master/KUBERNETES.md)
+    ![image](https://user-images.githubusercontent.com/28517651/27036830-7b604dd4-4fc9-11e7-8492-e88eb733eb81.png)
+
+  + #### Input & Output method
+
+    There is a standard way to deal with the input and output data for both client side and server side
+    + Input 
+
+      There are 3 layers of wraps
+      ``` java
+      Inputstream sin = new Inputstream;
+      sin = socket.getInputStream(); //first layer
+
+      InputStreamReader sinread = new InputStreamReader(sin); //second layer
+
+      BufferedReader buffer = new BufferedReader(sinread); //third layer
+
+      //then, the inputsrtream data can be read, and used as logic condition
+      String str;
+      str=buffer.readLine();
+      if (str = "sample") {
+        ...
+      }
+      ```
+    + Output
+
+      There are two methods 
+      ```java
+      printwriter(sout).println
+      .....flush();
+
+      objectOutputStream(sout).writeObject(...)
+      .....flush();
+
+      ```
++ Multi-thread            
+  + #### life cycles
+    
+    It's important to know the life cycles of a thread. The java thread states are as: 
+
+    1. New
+    2. Runnable
+    3. Running
+    4. Non-Runnable (Blocked)
+    5. Terminated
+
+    And the relationship between 5 states above are illustrated as following:
+
+    ![image](https://user-images.githubusercontent.com/28517651/27128172-e0daa650-5140-11e7-94ad-0578f309e4e1.png)
+      
+  + #### key concept and process
+
+    There are 2 ways of defining
+
+    1. By extending Thread class
+        - override run() method;
+        - everything within run() is called a job.
+        - after instantiating t.start(), job from run() begins
+        - both main thread and child thread runs simultaneously
+        - no fixed flow of execution between main and child
+        - Thread scheduler is part of JVM
+    2. By implementing Runnable Interface (in java.lang and only method is run()) (Best approach)
+        - class A implements Runnable{ public void run(){ … }
+        - after instantiating, Thread t = new Thread(target Runnable object) and t.start();
++ Java Gui and lisener
+  It's a bit complecated that we Java GUI will utilise mutiple libraries to display proper windows, buttons and actions on different button.
+  + #### reference libraries
+    | Name | Description |
+    | ---- | ----------- | 
+    |java.awt.BorderLayout ||
+    |java.awt.Color ||
+    |java.awt.FlowLayout ||
+    |java.awt.GridLayout ||
+    |java.awt.Toolkit ||
+    |java.awt.event.ActionEvent ||
+    |java.awt.event.ActionListener ||
+    |java.awt.event.WindowEvent ||
+    |java.awt.event.WindowListener ||
+
+  + #### lisenter and anoiners-internal class  
+  + #### code structure
 
 
-### Todos
-
- - Write MOAR Tests
- - Add Night Mode
-
-License
-----
-
-MIT
-
-
-**Free Software, Hell Yeah!**
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
-
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [Ace Editor]: <http://ace.ajax.org>
-   [node.js]: <http://nodejs.org>
-   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
-   [jQuery]: <http://jquery.com>
-   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
-   [express]: <http://expressjs.com>
-   [AngularJS]: <http://angularjs.org>
-   [Gulp]: <http://gulpjs.com>
-
-   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
-   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
-   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
-   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
-   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
-   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
+ 
