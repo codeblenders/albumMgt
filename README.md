@@ -19,7 +19,7 @@ This software includes Server side and Client side.
 
 To run the project, you should run "MyCollectionServer" first on server side. The server process will be running waiting for the connection from any client. Then run "MyCollection" on client side. The GUI window will pup-out. By clicking "connection server" button, you need to specify the server address and then connection will be build.
 
-![image](https://user-images.githubusercontent.com/28517651/27001136-5e2a2aca-4e05-11e7-9d59-b15f7e569303.png)
+![image](https://user-images.githubusercontent.com/28517651/28015194-3c5cd32e-65b2-11e7-93a1-6725f31e2f27.png)
 
 ![image](https://user-images.githubusercontent.com/28517651/27001148-a3016b5e-4e05-11e7-8d78-f730095e9865.png)
 
